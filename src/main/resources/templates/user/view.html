@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"  th:replace="~{base :: parent(~{::#content},~{::#title},~{::script})}"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title id="title" >Profile page</title>
+</head>
+
+<body>
+    <div id="content">
+        <div class="grid grid-cols-12 " >
+            <div class="col-span-6 mx-auto pt-10 w-80">
+                
+                <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    
+                    <form 
+                            th:action="@{'/user/contacts/update/'+${contactId}}"
+                            method="post" 
+                            th:if="${contactData}"
+                            th:object="${contactData}"
+                            enctype="multipart/form-data"
+                            novalidate
+                    >
+                            <h1 class="text-2xl font-semibold mb-6">Update Contact</h1>
+
+                            <div th:replace="~{message :: messageBox}">
+                                
+                            </div>
+
+                            <label for="input-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
+                            <div class="relative mb-2">
+                              <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <i class="fa-solid fa-user"></i>
+                              </div>
+                              <input type="text" th:field="*{name}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="">
+                            </div>
+                            <p
+                                th:if="${#fields.hasErrors('name')}"
+                                th:errors="*{name}"
+                                class="text-red-600 px-1 pb-2"
+                            >
+                            </p>
+
+                            <label for="input-phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Phone Number</label>
+                            <div class="relative mb-2">
+                              <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <i class="fa-solid fa-phone"></i>
+                              </div>
+                              <input type="tel" th:field="*{phoneNo}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123467890">
+                            </div>
+                            <p
+                                th:if="${#fields.hasErrors('phoneNo')}"
+                                th:errors="*{phoneNo}"
+                                class="text-red-600 px-1 pb-2"
+                            >
+                            </p>
+
+                            <label for="input-email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
+                            <div class="relative mb-2">
+                              <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <i class="fa-solid fa-envelope"></i>
+                              </div>
+                              <input type="email" th:field="*{email}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="example@gmail.com">
+                            </div>
+                            <p
+                                th:if="${#fields.hasErrors('email')}"
+                                th:errors="*{email}"
+                                class="text-red-600 px-1 pb-2"
+                            >
+                            </p>
+                            
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="small_size">Contact Image</label>
+                            <input th:field="*{profilePic}" class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file">
+
+                            <div class="flex items-center mb-4">
+                                <input th:field="*{favorite}" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is this your favorite contact</label>
+                            
+                            </div>
+
+                        <div class="button-container text-center">
+                            <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-black dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Update
+                            </button>
+                            <button type="reset" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-black dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Reset
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script >
+        console.log("From SignUp");
+    </script>
+</body>
+
+</html>

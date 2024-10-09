@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"  th:replace="~{base :: parent(~{::#content},~{::#title},~{::script})}"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title id="title" >Profile page</title>
+</head>
+
+<body>
+    <div id="content">
+        
+            <div class="mx-auto mt-6 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                
+                <div class="flex flex-col items-center pb-10">
+                    <img class="w-24 h-24 my-3 rounded-full shadow-lg" th:src="@{*{user.profilePic}}" alt=""/>
+                    <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white" th:text="${user.name}" ></h5>
+                    <span class="text-sm text-gray-500 dark:text-gray-400" th:text="${user.email}"></span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400" th:text="${user.phoneNo}"></span>
+                </div>
+            </div>
+
+    </div>
+
+    <script >
+        console.log("From SignUp");
+    </script>
+</body>
+
+</html>

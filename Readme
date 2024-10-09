@@ -1,0 +1,19 @@
+User Authentication
+Overview
+Contact Manager is a web application that provides user authentication functionalities. It is built using Java, Spring Boot, and Spring Security.
+The application serves as a starting point for managing user login, signup, and secure access to specific parts of the application.
+
+Features
+
+User Registration: New users can sign up for an account.
+User Authentication: Registered users can log in to access secure areas of the application.
+Password Encryption: User passwords are securely stored using encryption provided by Spring Security.
+Session Management: User sessions are managed to ensure secure access.
+Error Handling: Provides feedback for common authentication errors like incorrect login details.
+
+Technology Stack
+
+Backend: Java, Spring Boot
+Security: Spring Security
+Build Tool: Maven
+Database: MySQL

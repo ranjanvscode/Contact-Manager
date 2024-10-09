@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" th:fragment="parent(content,title,script)"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="${title} ?:~{}">SCM</title>
+    <!-- FlowBite Style Link -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Tailwind custom style link -->
+    <link rel="stylesheet" th:href="@{'/css/output.css'}">
+    <!-- Custom style css link -->
+     <link rel="stylesheet" th:href="@{'/css/style.css'}">
+</head>
+<body class="dark:bg-gray-800 dark:text-white" >
+  
+    
+    
+    <div th:if="${user}" >
+        <div th:replace="~{user/user_navbar::userNavbar}"></div>
+    </div>
+    <div th:unless="${user}" >
+        <div th:replace="~{navbar::navbarMenu}"></div>
+    </div>
+
+    <div>
+        <section th:replace="${content}?:~{}">
+        </section>
+    </div>
+
+
+    <!-- FlowBite JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script> -->
+    <script th:src="@{'/js/script.js'}" ></script>
+    <th:block th:replace="${script} ?: ~{}" />
+</body>
+</html>
