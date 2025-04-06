@@ -25,11 +25,9 @@ public class UserForm {
 
     @NotBlank(message = "Email required")
     @Email(message = "Email should be valid")
-    // @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$", message = "Invalid email")
-    private String email;
+    private String email; 
 
     @NotBlank(message = "Password is required")
-    // @Pattern(regexp = "", message = "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.")
     private String password;
 
     @NotBlank(message = "Contact No. is required")

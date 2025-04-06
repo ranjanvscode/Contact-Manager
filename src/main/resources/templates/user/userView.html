@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"  th:replace="~{base :: parent(~{::#content},~{::#title},~{::script})}"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title id="title" >Profile page</title>
+</head>
+
+<body>
+    <div id="content">
+
+                    <div class="relative overflow-x-hidden max-w-md border text-white rounded-2xl shadow-lg p-4 mx-auto mt-8">
+                            <form 
+                            th:if="${userData}"
+                            th:object="${userData}"
+                            th:action="@{'/user/update/'+${userData.id}}"
+                            method="post" 
+                            enctype="multipart/form-data"
+                            novalidate
+                            class="flex flex-col items-center"
+                            >
+                            <h1 class="text-2xl font-semibold mb-6">User Information</h1>
+
+                            <div th:replace="~{message :: messageBox}">
+                                
+                            </div>
+                            <img 
+                                onerror="this.src='https://res.cloudinary.com/dh2syh2li/image/upload/v1728264074/rmbfiihvtjpp7zjt6rpc.png'"
+                                class="w-20 h-20 rounded-full" th:src="@{*{profilePic}}" alt="Jese image">
+
+                                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <tbody>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Name
+                                            </th>
+                                            <td class="px-6 py-4" th:text="*{name}"></td>
+                                        </tr>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Email
+                                            </th>
+                                            <td class="px-6 py-4" th:text="*{email}"></td>
+                                        </tr>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Phone No.
+                                            </th>
+                                            <td class="px-6 py-4" th:text="*{phoneNo}"></td>
+                                        </tr>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Provider
+                                            </th>
+                                            <td class="px-6 py-4" th:text="*{provider}"></td>
+                                        </tr>
+
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <!-- <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">User enabled:</span> -->
+                                                User enabled:
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                <div>
+                                                    <label class="inline-flex cursor-pointer">
+                                                        <!-- <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">User enabled:</span> -->
+                                                        <input type="checkbox" th:field="*{enabled}" class="sr-only peer">
+                                                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <!-- <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">User email vefied:</span> -->
+                                                User email vefied:
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                <div>
+                                                    <label for="emailV" class="inline-flex items-center cursor-pointer">
+                                                        <input id="emailV" type="checkbox" th:field="*{emailVarified}" class="sr-only peer">
+                                                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>    
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <!-- <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">User phone no vefied:</span> -->
+                                            User phone no vefied:
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            <div>
+                                                <label class="inline-flex items-center cursor-pointer">
+                                                    <!-- <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">User phone no vefied:</span> -->
+                                                    <input type="checkbox" th:field="*{phoneVarified}" class="sr-only peer">
+                                                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <!-- <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Make admin:</span> -->
+                                            Make admin:
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            <div>
+                                                <label class="inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" th:field="*{roleList}" value="ROLE_ADMIN" th:checked="${#lists.contains(userData.roleList, 'ROLE_ADMIN')}" class="sr-only peer">
+                                                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            
+                              
+                        <div class="button-container text-center mt-8">
+                            <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-black dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Update
+                            </button>
+                            <button type="reset" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-black dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Reset
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+    </div>
+</body>
+</html>

@@ -29,10 +29,10 @@ public class MyController {
         return "redirect:/home";
     }
 
-    @GetMapping("/base")
-    public String getBase() {
-        return "base";
-    }
+    // @GetMapping("/base")
+    // public String getBase() {
+    //     return "base";
+    // }
 
     @GetMapping("/contact")
     public String contact(){

@@ -7,7 +7,7 @@
 </head>
 <body id="content" >
     <div class="grid grid-cols-12" >
-        <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4 mx-auto mt-10">
+        <div class="col-span-12 mx-auto mt-10">
             <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
             <div th:replace="~{message :: messageBox}" >
@@ -24,7 +24,7 @@
                 </svg>
                 <span class="sr-only">Info</span>
                 <div>
-                  <span class="font-medium">Invalid username and password.</span>
+                  <span class="font-medium" th:text="${param.error}"></span>
                 </div>
             </div>
 

@@ -49,7 +49,7 @@ public class User implements UserDetails{
     @Builder.Default
     private boolean enabled=true;
     @Builder.Default
-    private boolean emailVarified=false;
+    private boolean emailVarified=false; 
     @Builder.Default
     private boolean phoneVarified=false;
 
@@ -59,6 +59,7 @@ public class User implements UserDetails{
     private String providerId;
 
     @ElementCollection(fetch = FetchType.EAGER)
+    @Builder.Default
     private List<String> roleList = new ArrayList<>();
 
     @Builder.Default

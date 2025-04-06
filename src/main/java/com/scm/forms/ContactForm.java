@@ -17,7 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ContactForm {
+public class ContactForm { 
 
     @NotBlank(message = "Name is required")
     @Size(min=3,message = "Name should be min 3 character")

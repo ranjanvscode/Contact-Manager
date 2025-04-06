@@ -49,23 +49,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUsers() {
         return userRepo.findAll();
-    }
+    } 
 
     @Override
     public User updateUser(User user) {
-
-        User user2 = userRepo.findById(user.getId()).orElseThrow(()-> new ResourceNotFound("user not found"));
-
-        user2.setName(user.getName());
-        user2.setEmail(user.getEmail());
-        user2.setPassword(user.getPassword());
-        user2.setPhoneNo(user.getPhoneNo());
-        user2.setProfilePic(user.getProfilePic());
-        user2.setEmailVarified(user.isEmailVarified());
-        user2.setEnabled(user.isEnabled());
-        user2.setPhoneVarified(user.isPhoneVarified());
-        user2.setProviderId(user.getProviderId());
-        user2.setProvider(user.getProvider());
 
         return userRepo.save(user);
     }

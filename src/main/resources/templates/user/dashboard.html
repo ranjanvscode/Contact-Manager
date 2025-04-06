@@ -5,7 +5,7 @@
     <title id="title" >Dashboard</title>
 </head>
 
-<body>
+<!-- <body>
     <div id="content">
         <h1 class="p-2 mt-2 mx-auto text-4xl font-semibold" >Dashboard</h1>
     </div>
@@ -15,4 +15,136 @@
     </script>
 </body>
 
+</html> -->
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <div>
+        
+        <h1>This dummy data</h1>
+    </div>
+    
+    <!-- Main Dashboard -->
+    <div id="content" class="container mx-auto mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <!-- Sidebar: Contact Groups -->
+        <div class="border border-gray-700 col-span-1 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4">
+            <h2 class="text-center text-xl font-semibold mb-4">All Users</h2>
+
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Phone No.
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr 
+                        th:each="c: ${allUserList}"
+                        th:object="${c}"
+                    >
+                        <th>
+                            <div class="ps-3">
+                                <div class="text-base font-semibold" th:text="*{name}" ></div>
+                                <div class="font-normal text-gray-500" th:text="*{email}"></div>
+                            </div>  
+                        </th>
+                        <td class="px-6 py-4">
+                            <span th:text="*{PhoneNo}" ></span>
+                        </td>
+
+                        <td class="px-6 py-4">
+
+                            <!-- Delete contact icon -->
+                            <!-- <a th:href="@{'/user/contacts/delete/'+*{id}+'/'+*{cloudinaryImagePublicId}}" class="font-medium text-red-600 dark:text-red-500 px-1">
+                                <i class="fa-solid fa-trash"></i>
+                            </a> -->
+                            
+                            <!-- Update Modal toggle -->
+                            <a th:href="@{'/user/userView/'+*{id}}" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 px-1">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-span-2 ">
+            <!-- Top Info: Total Contacts, Quick Add -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="border border-gray-700 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4">
+                    <h2 class="text-lg font-semibold">Total Users</h2>
+                    <p th:text="${allUserList.size()}" class="text-4xl text-blue-600 dark:text-blue-400 font-bold">------</p>
+                </div>
+                <div class="border border-gray-700 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 flex items-center justify-between">
+                    <h2 class="text-lg font-semibold">Quick Add Contact</h2>
+                    <a th:href="@{'/user/contacts/add'}" class="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded-lg">+ Add Contact</a>
+                </div>
+            </div>
+
+            <!-- Recent Contacts and Favorites -->
+            <div class="border border-gray-700 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mb-8">
+                <h2 class="text-xl font-semibold mb-4">Recent Contacts</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="border border-gray-700 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                        <h3 class="font-semibold">John Doe</h3>
+                        <p>john.doe@example.com</p>
+                        <p>123-456-7890</p>
+                    </div>
+                    <div class="border border-gray-700 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                        <h3 class="font-semibold">Jane Smith</h3>
+                        <p>jane.smith@example.com</p>
+                        <p>987-654-3210</p>
+                    </div>
+                    <!-- Add more contact cards as needed -->
+                </div>
+            </div>
+
+            <!-- Analytics and Activity -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Analytics -->
+                <div class="bg-white dark:bg-gray-800 border border-gray-700 shadow-lg rounded-lg p-4">
+                    <h2 class="text-xl font-semibold mb-4">Contact Analytics</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold">Work</h3>
+                            <p class="text-3xl text-blue-600 dark:text-blue-400">---</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold">Friends</h3>
+                            <p class="text-3xl text-blue-600 dark:text-blue-400">---</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold">Family</h3>
+                            <p class="text-3xl text-blue-600 dark:text-blue-400">---</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold">Favorites</h3>
+                            <p class="text-3xl text-blue-600 dark:text-blue-400">---</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="border border-gray-700 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4">
+                    <h2 class="text-xl font-semibold mb-4">Recent Activity</h2>
+                    <ul>
+                        <li class="mb-2">John Doe was added <span class="text-gray-500 dark:text-gray-400">2 days ago</span></li>
+                        <li class="mb-2">Jane Smith's contact info updated <span class="text-gray-500 dark:text-gray-400">4 days ago</span></li>
+                        <li class="mb-2">New contact group "Clients" created <span class="text-gray-500 dark:text-gray-400">1 week ago</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

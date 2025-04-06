@@ -63,7 +63,7 @@ public class OAuthAuthenticationSuccesshandler implements AuthenticationSuccessH
 
         }else if (authorizedClientRegistrationId.equalsIgnoreCase("github")) {
             
-            email = user.getAttribute("login").toString()+"@gmail.com";
+            email = user.getAttribute("login")!=null ? user.getAttribute("login") : user.getAttribute("login").toString()+"@gmail.com";
             String picture = user.getAttribute("avatar_url").toString();
 
             user1.setEmail(email);
@@ -78,8 +78,9 @@ public class OAuthAuthenticationSuccesshandler implements AuthenticationSuccessH
         User userExist = userRepo.findByEmail(email).orElse(null);
 
         if (userExist==null) userRepo.save(user1);
-         
 
-        new DefaultRedirectStrategy().sendRedirect(request, response, "/user/profile");
+        // System.out.println(user.getAttributes());
+         
+        new DefaultRedirectStrategy().sendRedirect(request, response, "/home");
     }
 }

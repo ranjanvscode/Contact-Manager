@@ -24,6 +24,4 @@ public interface ContactService {
     List<Contacts> getByUserId(String userId);
 
     Page<Contacts> getByUser(User user,int page, int size, String sortBy,String direction);
-
-    // Contacts getByPhoneNo(String number);
 } 
